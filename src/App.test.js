@@ -39,4 +39,21 @@ describe("user navigation", () => {
     expect(boardHeader).not.toBeInTheDocument();
     expect(homeHeader).toBeInTheDocument();
   });
+
+  it("user can visit the game page by clicking on a link", async () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    const user = userEvent.setup();
+
+    const homeHeader = screen.getByRole("heading", {
+      name: "Waldo without Waldo",
+    });
+    const gameLink = screen.getAllByTestId("game-link")[0];
+    await user.click(gameLink);
+    expect(screen.getByRole("button", { name: /start/i })).toBeInTheDocument();
+    expect(homeHeader).not.toBeInTheDocument();
+  });
 });
