@@ -10,11 +10,12 @@ describe("user navigation", () => {
         <App />
       </MemoryRouter>
     );
+    const user = userEvent.setup();
     const homeHeader = screen.getByRole("heading", {
       name: "Waldo without Waldo",
     });
     const leadBrdLink = screen.getByRole("link", { name: "Leaderboard" });
-    await userEvent.click(leadBrdLink);
+    await user.click(leadBrdLink);
     const boardHeader = screen.getByRole("heading", { name: "Leaderboard" });
     expect(boardHeader).toBeInTheDocument();
     expect(homeHeader).not.toBeInTheDocument();
@@ -26,10 +27,11 @@ describe("user navigation", () => {
         <App />
       </MemoryRouter>
     );
+    const user = userEvent.setup();
 
     const boardHeader = screen.getByRole("heading", { name: "Leaderboard" });
     const homepageLink = screen.getByRole("link", { name: "Home" });
-    await userEvent.click(homepageLink);
+    await user.click(homepageLink);
 
     const homeHeader = screen.getByRole("heading", {
       name: "Waldo without Waldo",
