@@ -12,7 +12,7 @@ function Homepage({ images, onLinkClick }) {
         {images.map((img) => (
           <Link
             onClick={onLinkClick}
-            to=""
+            to="/game"
             key={img.id}
             data-testid="game-link"
           >

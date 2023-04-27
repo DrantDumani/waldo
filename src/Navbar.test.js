@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import userEvent from "@testing-library/user-event";
 import Navbar from "./Navbar";
 
 describe("Navbar component", () => {
@@ -15,7 +14,7 @@ describe("Navbar component", () => {
   describe("Does not render links for pages a user is currently viewing", () => {
     it("does not render the home page while on the home page", () => {
       render(
-        <MemoryRouter initialEntries={["home"]}>
+        <MemoryRouter initialEntries={["/"]}>
           <Navbar />
         </MemoryRouter>
       );
@@ -31,7 +30,7 @@ describe("Navbar component", () => {
 
     it("does not render the leaderboards page while on the leaderboard page", () => {
       render(
-        <MemoryRouter initialEntries={["leaderboards"]}>
+        <MemoryRouter initialEntries={["/leaderboards"]}>
           <Navbar />
         </MemoryRouter>
       );
@@ -45,7 +44,7 @@ describe("Navbar component", () => {
 
     it("does not render the about page while on the about page", () => {
       render(
-        <MemoryRouter initialEntries={["about"]}>
+        <MemoryRouter initialEntries={["/about"]}>
           <Navbar />
         </MemoryRouter>
       );
