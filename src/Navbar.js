@@ -12,17 +12,22 @@ function Navbar() {
   //could use a for in loop while checking the keys instead. Refactor later?
   useEffect(() => {
     if (pathname === "/") {
-      console.log(pathname);
-      setDisplay((state) => {
-        return { seeAbout: true, seeHome: false, seeLeaderBoards: true };
+      setDisplay({
+        seeAbout: true,
+        seeHome: false,
+        seeLeaderBoards: true,
       });
     } else if (pathname.includes("/leaderboards")) {
-      setDisplay((state) => {
-        return { seeAbout: true, seeHome: true, seeLeaderBoards: false };
+      setDisplay({
+        seeAbout: true,
+        seeHome: true,
+        seeLeaderBoards: false,
       });
     } else if (pathname.includes("/about")) {
-      setDisplay((state) => {
-        return { seeAbout: false, seeHome: true, seeLeaderBoards: true };
+      setDisplay({
+        seeAbout: false,
+        seeHome: true,
+        seeLeaderBoards: true,
       });
     }
   }, [pathname]);
