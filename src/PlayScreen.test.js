@@ -3,13 +3,12 @@ import { render, screen } from "@testing-library/react";
 import PlayScreen from "./PlayScreen";
 
 describe("PlayScreen component", () => {
-  const fakeImg = {
-    src: "https://cdnb.artstation.com/p/assets/images/images/028/956/671/large/aaron-hibiki-earthbound-fuzzy-pickles.jpg?1596028225",
-  };
+  const fakeImg = { src: "" };
+  const choices = [];
   it("Pulls up a dropdown menu underneath where the player clicked on the image", async () => {
     render(
       <MemoryRouter>
-        <PlayScreen imgData={fakeImg} />
+        <PlayScreen imgData={fakeImg} choices={choices} />
       </MemoryRouter>
     );
     const fakeMouseEvent = new MouseEvent("click", { bubbles: true });

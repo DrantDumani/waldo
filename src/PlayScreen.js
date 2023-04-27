@@ -1,15 +1,13 @@
 import { useState } from "react";
+import PlayerChoices from "./PlayerChoices";
 
-function PlayScreen({ imgData }) {
+function PlayScreen({ imgData, choices }) {
   const [showSelections, setShowSelections] = useState(false);
   const [position, setPosition] = useState({ x: 80, y: 0 });
 
   const handleImageClick = (e) => {
-    console.log(e.nativeEvent.offsetX);
-    // act(() => {
     setPosition({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY + 10 });
     setShowSelections(true);
-    // });
   };
 
   return (
@@ -21,12 +19,7 @@ function PlayScreen({ imgData }) {
         style={{ position: "relative" }}
       />
       {showSelections && (
-        <div
-          data-testid="button-container"
-          style={{ left: position.x, top: position.y, position: "absolute" }}
-        >
-          {position.x}
-        </div>
+        <PlayerChoices position={position} choices={choices} />
       )}
     </div>
   );
