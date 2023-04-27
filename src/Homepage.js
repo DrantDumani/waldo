@@ -2,13 +2,24 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-function Homepage() {
+function Homepage({ images, onLinkClick }) {
   return (
     <main>
       <h1 className="title">Waldo without Waldo</h1>
-      <Link to="Waldo-without-Waldo/game" data-testid="game-link">
-        Replace with pic
-      </Link>
+      {/* <Link to="Waldo-without-Waldo/game" data-testid="game-link"> */}
+      {/* </Link> */}
+      <div>
+        {images.map((img) => (
+          <Link
+            onClick={onLinkClick}
+            to=""
+            key={img.id}
+            data-testid="game-link"
+          >
+            <img src={img.src} alt="Pick a game!" />
+          </Link>
+        ))}
+      </div>
     </main>
   );
 }
