@@ -14,15 +14,9 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/home" element={<Homepage images={[imgData]} />} />
-        <Route
-          path="/Waldo-without-Waldo/leaderboards"
-          element={<Leaderboard />}
-        />
-        <Route
-          path="home/Waldo-without-Waldo/game"
-          element={<Game imgData={imgData} />}
-        />
+        <Route path="/" element={<Homepage images={[imgData]} />} />
+        <Route path="/leaderboards" element={<Leaderboard />} />
+        <Route path="/game" element={<Game imgData={imgData} />} />
       </Routes>
     </>
   );

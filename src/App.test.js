@@ -14,16 +14,16 @@ describe("user navigation", () => {
     const homeHeader = screen.getByRole("heading", {
       name: "Waldo without Waldo",
     });
-    const leadBrdLink = screen.getByRole("link", { name: "Leaderboard" });
+    const leadBrdLink = screen.getByRole("link", { name: /Leaderboard/i });
     await user.click(leadBrdLink);
-    const boardHeader = screen.getByRole("heading", { name: "Leaderboard" });
+    const boardHeader = screen.getByRole("heading", { name: /Leaderboard/i });
     expect(boardHeader).toBeInTheDocument();
     expect(homeHeader).not.toBeInTheDocument();
   });
 
   it("navigates from leaderboard to homepage", async () => {
     render(
-      <MemoryRouter initialEntries={["/Waldo-without-Waldo/Leaderboard"]}>
+      <MemoryRouter initialEntries={["/leaderboards"]}>
         <App />
       </MemoryRouter>
     );
