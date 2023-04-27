@@ -14,13 +14,13 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/home" element={<Homepage images={[imgData]} />} />
         <Route
-          path="/Waldo-without-Waldo/Leaderboard"
+          path="/Waldo-without-Waldo/leaderboards"
           element={<Leaderboard />}
         />
         <Route
-          path="Waldo-without-Waldo/game"
+          path="home/Waldo-without-Waldo/game"
           element={<Game imgData={imgData} />}
         />
       </Routes>
