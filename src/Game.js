@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { act } from "react-dom/test-utils";
 
-function Game({ imgData }) {
+function Game({ imgData, callback }) {
   const [gameBegin, setGameBegin] = useState(true);
   const [gamePlaying, setGamePlaying] = useState(true);
   const [fake, setFake] = useState(false);
