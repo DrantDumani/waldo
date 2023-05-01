@@ -5,17 +5,29 @@ import Objectives from "./Objectives";
 
 describe("Objectives component", () => {
   const thumbnails = [
-    { src: "", id: "1" },
-    { src: "", id: "2" },
+    { src: "", id: "1", name: "The" },
+    { src: "", id: "2", name: "Big" },
   ];
-  it("should render all images in the thumbnails array", () => {
+  it("should render all images in the thumbnails array with correct alt text", () => {
     render(
       <MemoryRouter>
         <Objectives thumbnails={thumbnails} />
       </MemoryRouter>
     );
 
-    expect(screen.getAllByAltText("thumbnail").length).toBe(thumbnails.length);
+    expect(screen.getByAltText("The")).toBeInTheDocument();
+    expect(screen.getByAltText("Big")).toBeInTheDocument();
+  });
+
+  it("should render all name properties in the thumbnails array", () => {
+    render(
+      <MemoryRouter>
+        <Objectives thumbnails={thumbnails} />
+      </MemoryRouter>
+    );
+
+    expect(screen.getByText("The")).toBeInTheDocument();
+    expect(screen.getByText("Big")).toBeInTheDocument();
   });
 
   it("should call function when start button is clicked", async () => {
