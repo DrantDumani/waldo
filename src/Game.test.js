@@ -4,14 +4,15 @@ import userEvent from "@testing-library/user-event";
 import Game from "./Game";
 
 const gameImgData = {
-  src: "https://cdnb.artstation.com/p/assets/images/images/028/956/671/large/aaron-hibiki-earthbound-fuzzy-pickles.jpg?1596028225",
+  src: "",
 };
+const mockFn = jest.fn();
 
 describe("Game component", () => {
   it("game begins when user clicks the start button", async () => {
     render(
       <MemoryRouter>
-        <Game imgData={gameImgData} />
+        <Game imgData={gameImgData} callback={mockFn} />
       </MemoryRouter>
     );
     const user = userEvent.setup();
