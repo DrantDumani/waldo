@@ -5,7 +5,14 @@ function PlayerChoices({ position, choices, handleClick }) {
       style={{ left: position.x, top: position.y, position: "absolute" }}
     >
       {choices.map((choice) => (
-        <button key={choice.id} onClick={handleClick}></button>
+        <button
+          key={choice.id}
+          onClick={() => {
+            handleClick(position);
+          }}
+        >
+          {choice.name}
+        </button>
       ))}
       {position.x}
     </div>

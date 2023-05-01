@@ -6,8 +6,6 @@ function Homepage({ images, onLinkClick }) {
   return (
     <main>
       <h1 className="title">Waldo without Waldo</h1>
-      {/* <Link to="Waldo-without-Waldo/game" data-testid="game-link"> */}
-      {/* </Link> */}
       <div>
         {images.map((img) => (
           <Link

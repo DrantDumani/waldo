@@ -4,7 +4,10 @@ import userEvent from "@testing-library/user-event";
 import Homepage from "./Homepage";
 
 describe("Homepage component", () => {
-  const fakeImgs = [{ src: "" }, { src: "" }];
+  const fakeImgs = [
+    { src: "", id: 1 },
+    { src: "", id: 2 },
+  ];
   it("renders all images in the fakeImgs array", () => {
     render(
       <MemoryRouter>

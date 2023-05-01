@@ -5,7 +5,11 @@ import PlayerChoices from "./PlayerChoices";
 
 describe("PlayerChoices component", () => {
   const position = {};
-  const choices = ["Link", "Zelda", "Ganon"];
+  const choices = [
+    { name: "Link", id: 1 },
+    { name: "Zelda", id: 2 },
+    { name: "Ganon", id: 3 },
+  ];
 
   it("renders all options in the choices array", () => {
     render(<PlayerChoices position={position} choices={choices} />, {
@@ -14,7 +18,7 @@ describe("PlayerChoices component", () => {
     expect(screen.getAllByRole("button").length).toBe(choices.length);
   });
 
-  it("calls a function when a button is clicked", async () => {
+  it("calls a function with correct args when a button is clicked", async () => {
     const mockFn = jest.fn();
     render(
       <PlayerChoices
@@ -29,5 +33,6 @@ describe("PlayerChoices component", () => {
     const user = userEvent.setup();
     await user.click(screen.getAllByRole("button")[0]);
     expect(mockFn).toBeCalledTimes(1);
+    expect(mockFn).toBeCalledWith(position);
   });
 });
