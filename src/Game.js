@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { act } from "react-dom/test-utils";
+import { useState, useContext } from "react";
+import { DataContext } from "./DataContext";
 
-function Game({ imgData, callback }) {
+function Game({ imgData }) {
+  const { gameData } = useContext(DataContext);
   const [gameBegin, setGameBegin] = useState(true);
   const [gamePlaying, setGamePlaying] = useState(true);
   const [fake, setFake] = useState(false);
@@ -14,9 +15,7 @@ function Game({ imgData, callback }) {
   const checkVic = (e) => {
     console.log(e.nativeEvent.offsetX);
     if (e.nativeEvent.offsetX > 200) {
-      act(() => {
-        setFake(true);
-      });
+      setFake(true);
     }
   };
 

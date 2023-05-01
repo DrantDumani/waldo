@@ -2,6 +2,7 @@ import { MemoryRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Game from "./Game";
+import { DataContext } from "./DataContext";
 
 const gameImgData = {
   src: "",
@@ -12,7 +13,9 @@ describe("Game component", () => {
   it("game begins when user clicks the start button", async () => {
     render(
       <MemoryRouter>
-        <Game imgData={gameImgData} callback={mockFn} />
+        <DataContext.Provider value={{ mockFn }}>
+          <Game imgData={gameImgData} />
+        </DataContext.Provider>
       </MemoryRouter>
     );
     const user = userEvent.setup();
@@ -25,10 +28,12 @@ describe("Game component", () => {
     expect(startBtn).not.toBeInTheDocument();
   });
 
-  it("does stuff", () => {
+  it("does stuff", async () => {
     render(
       <MemoryRouter>
-        <Game imgData={gameImgData} />
+        <DataContext.Provider value={{ mockFn }}>
+          <Game imgData={gameImgData} />
+        </DataContext.Provider>
       </MemoryRouter>
     );
 
@@ -37,6 +42,7 @@ describe("Game component", () => {
     Object.defineProperty(event, "offsetX", { value: 300 });
     console.log(event.clientX);
     gameImg.dispatchEvent(event);
-    expect(screen.getByText("Finally")).toBeInTheDocument();
+    const victory = await screen.findByText("Finally");
+    expect(victory).toBeInTheDocument();
   });
 });

@@ -1,4 +1,9 @@
-function PlayerChoices({ position, choices, handleClick }) {
+import { useContext } from "react";
+import { DataContext } from "./DataContext";
+
+function PlayerChoices({ position, choices }) {
+  const { checkValidation } = useContext(DataContext);
+
   return (
     <div
       data-testid="button-container"
@@ -8,7 +13,7 @@ function PlayerChoices({ position, choices, handleClick }) {
         <button
           key={choice.id}
           onClick={() => {
-            handleClick(position);
+            checkValidation(position);
           }}
         >
           {choice.name}

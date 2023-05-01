@@ -2,9 +2,11 @@ import { MemoryRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import PlayerChoices from "./PlayerChoices";
+import { DataContext } from "./DataContext";
 
 describe("PlayerChoices component", () => {
   const position = {};
+  const mockFn = jest.fn();
   const choices = [
     { name: "Link", id: 1 },
     { name: "Zelda", id: 2 },
@@ -12,20 +14,22 @@ describe("PlayerChoices component", () => {
   ];
 
   it("renders all options in the choices array", () => {
-    render(<PlayerChoices position={position} choices={choices} />, {
-      wrapper: MemoryRouter,
-    });
+    render(
+      <DataContext.Provider value={{ checkValidation: mockFn }}>
+        <PlayerChoices position={position} choices={choices} />
+      </DataContext.Provider>,
+      {
+        wrapper: MemoryRouter,
+      }
+    );
     expect(screen.getAllByRole("button").length).toBe(choices.length);
   });
 
   it("calls a function with correct args when a button is clicked", async () => {
-    const mockFn = jest.fn();
     render(
-      <PlayerChoices
-        position={position}
-        choices={choices}
-        handleClick={mockFn}
-      />,
+      <DataContext.Provider value={{ checkValidation: mockFn }}>
+        <PlayerChoices position={position} choices={choices} />
+      </DataContext.Provider>,
       {
         wrapper: MemoryRouter,
       }
