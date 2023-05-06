@@ -8,7 +8,9 @@ function Homepage({ images, onLinkClick }) {
       <div>
         {images.map((img) => (
           <Link
-            onClick={onLinkClick}
+            onClick={() => {
+              onLinkClick(img.id);
+            }}
             to="/game"
             key={img.id}
             data-testid="game-link"
