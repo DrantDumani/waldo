@@ -1,15 +1,19 @@
 import { MemoryRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import PlayScreen from "./PlayScreen";
+import { DataContext } from "./DataContext";
 
 describe("PlayScreen component", () => {
   const fakeImg = { src: "" };
   const choices = [];
+  const mockFn = jest.fn();
   it("Pulls up a dropdown menu underneath where the player clicked on the image", async () => {
     render(
-      <MemoryRouter>
-        <PlayScreen imgData={fakeImg} choices={choices} />
-      </MemoryRouter>
+      <DataContext.Provider value={{ checkValidation: mockFn }}>
+        <MemoryRouter>
+          <PlayScreen imgData={fakeImg} choices={choices} />
+        </MemoryRouter>
+      </DataContext.Provider>
     );
     const fakeMouseEvent = new MouseEvent("click", { bubbles: true });
     Object.defineProperties(fakeMouseEvent, {
