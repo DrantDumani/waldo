@@ -1,10 +1,8 @@
 import { useContext } from "react";
-import { DataContext } from "./DataContext";
 import { NameContext } from "./NameContext";
 
-function InputName({ time }) {
+function InputName({ time, handleSubmit, gameName }) {
   const { name, onNameChange } = useContext(NameContext);
-  const { onSubmitScore } = useContext(DataContext);
   return (
     <form>
       <input onChange={onNameChange} />
@@ -12,7 +10,7 @@ function InputName({ time }) {
         type="submit"
         onClick={(e) => {
           e.preventDefault();
-          onSubmitScore(time, name);
+          handleSubmit(time, name, gameName);
         }}
       >
         Submit Score!
