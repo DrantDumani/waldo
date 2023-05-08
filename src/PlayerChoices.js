@@ -1,8 +1,8 @@
-import { useContext } from "react";
-import { DataContext } from "./DataContext";
+// import { useContext } from "react";
+// import { DataContext } from "./DataContext";
 
-function PlayerChoices({ position, choices }) {
-  const { checkValidation } = useContext(DataContext);
+function PlayerChoices({ position, choices, gameName, onValidation }) {
+  // const { checkValidation } = useContext(DataContext);
 
   return (
     <div
@@ -13,7 +13,7 @@ function PlayerChoices({ position, choices }) {
         <button
           key={choice.id}
           onClick={() => {
-            checkValidation(position);
+            onValidation(position, choice.name, gameName);
           }}
         >
           {choice.name}
