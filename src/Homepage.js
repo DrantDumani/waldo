@@ -9,7 +9,7 @@ function Homepage({ images, onLinkClick }) {
         {images.map((img) => (
           <Link
             onClick={() => {
-              onLinkClick(img.id);
+              onLinkClick(img);
             }}
             to="/game"
             key={img.id}
