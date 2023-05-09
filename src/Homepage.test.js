@@ -5,13 +5,15 @@ import Homepage from "./Homepage";
 
 describe("Homepage component", () => {
   const fakeImgs = [
-    { src: "", id: 1 },
-    { src: "", id: 2 },
+    { src: "", id: "foo" },
+    { src: "", id: "bar" },
+    { src: "", id: "baz" },
   ];
-  it("renders all images in the fakeImgs array", () => {
+  const mockFn = jest.fn();
+  it("renders all images in the images prop", () => {
     render(
       <MemoryRouter>
-        <Homepage images={fakeImgs} />
+        <Homepage images={fakeImgs} onLinkClick={mockFn} />
       </MemoryRouter>
     );
 
@@ -19,10 +21,10 @@ describe("Homepage component", () => {
     expect(imgs.length).toBe(fakeImgs.length);
   });
 
-  it("renders links equal to the length of the fakeImgs array", () => {
+  it("renders number of links equal to the length of images prop", () => {
     render(
       <MemoryRouter>
-        <Homepage images={fakeImgs} />
+        <Homepage images={fakeImgs} onLinkClick={mockFn} />
       </MemoryRouter>
     );
 
@@ -30,8 +32,7 @@ describe("Homepage component", () => {
     expect(links.length).toBe(fakeImgs.length);
   });
 
-  it("calls function when user clicks link", async () => {
-    const mockFn = jest.fn();
+  it("calls function with correct argument when user clicks link", async () => {
     render(
       <MemoryRouter>
         <Homepage images={fakeImgs} onLinkClick={mockFn} />
@@ -41,6 +42,6 @@ describe("Homepage component", () => {
 
     const link = screen.getAllByTestId("game-link")[0];
     await user.click(link);
-    expect(mockFn).toBeCalledTimes(1);
+    expect(mockFn).toBeCalledWith(fakeImgs[0].id);
   });
 });
