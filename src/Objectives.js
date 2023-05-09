@@ -3,8 +3,8 @@ function Objectives({ thumbnails, onStart }) {
     <div>
       {thumbnails.map((pic) => (
         <div>
-          <img src={pic.src} alt={pic.name} key={pic.id} />
-          <p>{pic.name}</p>
+          <img src={pic.src} alt={pic.id} key={pic.id} />
+          <p>{pic.id}</p>
         </div>
       ))}
       <button onClick={onStart}>Start</button>
