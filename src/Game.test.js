@@ -2,25 +2,22 @@ import { MemoryRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Game from "./Game";
-import { DataContext } from "./DataContext";
 
 const gameImgData = {
   src: "",
   id: 1,
 };
-const mockgetGameData = () => {
-  return {
-    thumbnails: [],
-  };
-};
+
+const fakeThumbnails = [
+  { src: "", id: "foo", found: false },
+  { src: "", id: "bar", found: false },
+];
 
 describe("Game component", () => {
   it("game begins when user clicks the start button", async () => {
     render(
       <MemoryRouter>
-        <DataContext.Provider value={{ mockgetGameData }}>
-          <Game imgData={gameImgData} />
-        </DataContext.Provider>
+        <Game imgData={gameImgData} thumbnails={fakeThumbnails} />
       </MemoryRouter>
     );
     const user = userEvent.setup();

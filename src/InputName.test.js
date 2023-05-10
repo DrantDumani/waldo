@@ -10,17 +10,12 @@ describe("InputName Component", () => {
   const handleSubmit = jest.fn((e) => e.preventDefault());
   const time = 100;
   const mockName = "";
-  const mockGameName = "";
   it("calls function correct number of times when user types in input", async () => {
     render(
       <NameContext.Provider
         value={{ name: mockName, onNameChange: handleChange }}
       >
-        <InputName
-          time={time}
-          handleSubmit={handleSubmit}
-          gameName={mockGameName}
-        />
+        <InputName time={time} handleSubmit={handleSubmit} />
       </NameContext.Provider>,
       {
         wrapper: MemoryRouter,
@@ -38,11 +33,7 @@ describe("InputName Component", () => {
       <NameContext.Provider
         value={{ name: mockName, onNameChange: handleChange }}
       >
-        <InputName
-          time={time}
-          handleSubmit={handleSubmit}
-          gameName={mockGameName}
-        />
+        <InputName time={time} handleSubmit={handleSubmit} />
       </NameContext.Provider>,
       {
         wrapper: MemoryRouter,
@@ -53,6 +44,6 @@ describe("InputName Component", () => {
     const user = userEvent.setup();
     await user.click(submit);
 
-    expect(handleSubmit).toBeCalledWith(time, mockName, mockGameName);
+    expect(handleSubmit).toBeCalledWith(time, mockName);
   });
 });
