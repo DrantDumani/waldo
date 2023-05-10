@@ -1,7 +1,7 @@
-function ValidationText({ guess, name }) {
+function ValidationText({ boolean, name }) {
   return (
     <div>
-      {guess ? (
+      {boolean ? (
         <p>{`You found ${name}!`}</p>
       ) : (
         <p>Incorrect! Keep searching.</p>

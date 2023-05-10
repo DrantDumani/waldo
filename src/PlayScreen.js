@@ -1,10 +1,19 @@
 import { useState, useEffect } from "react";
 import PlayerChoices from "./PlayerChoices";
 import UserTime from "./UserTime";
+import ValidationText from "./ValidationText";
 
-function PlayScreen({ imgData, choices }) {
+function PlayScreen({
+  imgData,
+  thumbnails,
+  checkGameOver,
+  onValidation,
+  time,
+  currentChoice,
+  handleUserChoice,
+}) {
   const [showSelections, setShowSelections] = useState(false);
-  const [time, setTime] = useState(0);
+  const [showValidation, setShowValidation] = useState(false);
   const [position, setPosition] = useState(null);
 
   const handleImageClick = (e) => {
@@ -12,9 +21,23 @@ function PlayScreen({ imgData, choices }) {
     setShowSelections(true);
   };
 
+  const displayValidation = () => {
+    setShowValidation(true);
+  };
+
   useEffect(() => {
-    setTime((t) => t + 1);
-  }, []);
+    const id = setTimeout(() => {
+      setShowValidation(false);
+    }, 5000);
+
+    return () => {
+      clearTimeout(id);
+    };
+  }, [showValidation]);
+
+  const closeChoices = () => {
+    setShowSelections(false);
+  };
 
   return (
     <div>
@@ -26,7 +49,18 @@ function PlayScreen({ imgData, choices }) {
         style={{ position: "relative" }}
       />
       {showSelections && (
-        <PlayerChoices position={position} choices={choices} />
+        <PlayerChoices
+          position={position}
+          choices={thumbnails}
+          onValidation={onValidation}
+          checkGameOver={checkGameOver}
+          onSelection={closeChoices}
+          displayValidation={displayValidation}
+          handleUserChoice={handleUserChoice}
+        />
+      )}
+      {showValidation && (
+        <ValidationText boolean={currentChoice.found} name={currentChoice.id} />
       )}
     </div>
   );
