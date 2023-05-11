@@ -1,11 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getStorage } from "firebase/storage";
+import { getStorage, ref, getDownloadURL, listAll } from "firebase/storage";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAh0xod2Av1PNNMvbrC14a7nT-xtipj0Vk",
   authDomain: "waldo-without-waldo.firebaseapp.com",
@@ -19,4 +14,21 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
-export default storage;
+const getImagesFromFireBase = async (refString) => {
+  try {
+    const imgList = [];
+    const listRef = ref(storage, refString);
+    const { items } = await listAll(listRef);
+    for (let item of items) {
+      const path = item._location.path_;
+      const url = await getDownloadURL(ref(storage, path));
+      const name = path.match(/\w*(?=\.)/g)[0];
+      imgList.push({ src: url, id: name });
+    }
+    return imgList;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export default getImagesFromFireBase;
