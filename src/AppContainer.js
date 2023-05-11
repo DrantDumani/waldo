@@ -21,7 +21,7 @@ function AppContainer() {
   return (
     <App
       gameImages={gameImages}
-      currGame={gameImages[currGameIndex]}
+      currGame={gameImages[currGameIndex] || {}}
       setCurrGame={changeIndex}
     />
   );
