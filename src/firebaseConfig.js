@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, getDownloadURL, listAll } from "firebase/storage";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAh0xod2Av1PNNMvbrC14a7nT-xtipj0Vk",
@@ -13,6 +14,18 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
+const firestore = getFirestore(app);
+
+const getCoords = async (collectionId, docId) => {
+  const docRef = doc(firestore, collectionId, docId);
+  const coords = await getDoc(docRef);
+
+  if (coords.exists()) {
+    return coords;
+  } else {
+    throw new Error("Error fetching coordinates from firestore");
+  }
+};
 
 const getImagesFromFireBase = async (refString) => {
   try {
@@ -28,7 +41,8 @@ const getImagesFromFireBase = async (refString) => {
     return imgList;
   } catch (err) {
     console.log(err);
+    return [];
   }
 };
 
-export default getImagesFromFireBase;
+export { getImagesFromFireBase, getCoords };

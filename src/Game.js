@@ -37,9 +37,16 @@ function Game({
     setGameState("Playing");
   };
 
-  const handleGameOver = () => {
-    if (thumbnails.every((image) => image.found === true)) {
+  const handleGameOver = (arr) => {
+    if (arr.every((image) => image.found === true)) {
       setGameState("GameOver");
+    }
+  };
+
+  const onUserChoice = async (userInput, num) => {
+    const gameResult = await onValidation(userInput, num);
+    if (gameResult) {
+      handleGameOver(gameResult);
     }
   };
 
