@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NameContext } from "./NameContext";
 
-function InputName({ time, handleSubmit, gameName }) {
+function InputName({ time, handleSubmit }) {
   const { name, onNameChange } = useContext(NameContext);
   return (
     <form>
@@ -10,7 +10,7 @@ function InputName({ time, handleSubmit, gameName }) {
         type="submit"
         onClick={(e) => {
           e.preventDefault();
-          handleSubmit(time, name, gameName);
+          handleSubmit(time, name);
         }}
       >
         Submit Score!
