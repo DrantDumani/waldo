@@ -1,4 +1,4 @@
-function Objectives({ thumbnails, onStart }) {
+function Objectives({ thumbnails, handleClick }) {
   return (
     <div>
       {thumbnails.map((pic) => (
@@ -7,7 +7,7 @@ function Objectives({ thumbnails, onStart }) {
           <p>{pic.id}</p>
         </div>
       ))}
-      <button onClick={onStart}>Start</button>
+      <button onClick={handleClick}>Start</button>
     </div>
   );
 }
