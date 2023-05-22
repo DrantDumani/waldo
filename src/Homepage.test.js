@@ -42,6 +42,6 @@ describe("Homepage component", () => {
 
     const link = screen.getAllByTestId("game-link")[0];
     await user.click(link);
-    expect(mockFn).toBeCalledWith(fakeImgs[0].id);
+    expect(mockFn).toBeCalledWith(fakeImgs[0]);
   });
 });
