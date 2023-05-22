@@ -6,10 +6,10 @@ function Homepage({ images, onLinkClick }) {
     <main>
       <h1 className="title">Waldo without Waldo</h1>
       <div>
-        {images.map((img) => (
+        {images.map((img, ind) => (
           <Link
             onClick={() => {
-              onLinkClick(img);
+              onLinkClick(ind);
             }}
             to="/game"
             key={img.id}

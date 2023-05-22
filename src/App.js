@@ -4,19 +4,17 @@ import Leaderboard from "./Leaderboard";
 import Navbar from "./Navbar";
 import Game from "./Game";
 
-function App() {
-  //handle on backend later
-  const imgData = {
-    src: "https://cdnb.artstation.com/p/assets/images/images/028/956/671/large/aaron-hibiki-earthbound-fuzzy-pickles.jpg?1596028225",
-  };
-
+function App({ gameImages, currGame, setCurrGame }) {
   return (
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Homepage images={[imgData]} />} />
+        <Route
+          path="/"
+          element={<Homepage images={gameImages} onLinkClick={setCurrGame} />}
+        />
         <Route path="/leaderboards" element={<Leaderboard />} />
-        <Route path="/game" element={<Game imgData={imgData} />} />
+        <Route path="/game" element={<Game imgData={gameImages} />} />
       </Routes>
     </>
   );
