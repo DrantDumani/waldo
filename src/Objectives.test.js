@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event";
 import Objectives from "./Objectives";
 
 describe("Objectives component", () => {
+  const mockFn = jest.fn();
   const thumbnails = [
     { src: "", id: "The" },
     { src: "", id: "Big" },
@@ -11,7 +12,7 @@ describe("Objectives component", () => {
   it("should render all images in the thumbnails array with correct alt text", () => {
     render(
       <MemoryRouter>
-        <Objectives thumbnails={thumbnails} />
+        <Objectives thumbnails={thumbnails} handleClick={mockFn} />
       </MemoryRouter>
     );
 
@@ -22,7 +23,7 @@ describe("Objectives component", () => {
   it("should render all name properties in the thumbnails array", () => {
     render(
       <MemoryRouter>
-        <Objectives thumbnails={thumbnails} />
+        <Objectives thumbnails={thumbnails} handleClick={mockFn} />
       </MemoryRouter>
     );
 
@@ -31,10 +32,9 @@ describe("Objectives component", () => {
   });
 
   it("should call function when start button is clicked", async () => {
-    const mockFn = jest.fn();
     render(
       <MemoryRouter>
-        <Objectives thumbnails={thumbnails} onStart={mockFn} />
+        <Objectives thumbnails={thumbnails} handleClick={mockFn} />
       </MemoryRouter>
     );
     const user = userEvent.setup();
