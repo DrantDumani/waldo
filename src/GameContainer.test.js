@@ -3,6 +3,13 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import GameContainer from "./GameContainer";
 
+jest.mock("./firebaseConfig", () => {
+  return {
+    getImagesFromFireBase: jest.fn(),
+    getCoords: jest.fn(),
+  };
+});
+
 describe("GameContainer integration", () => {
   it("game begins when user clicks the start button", async () => {
     const shareID = "mask";
