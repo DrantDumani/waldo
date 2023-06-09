@@ -2,6 +2,14 @@ import { MemoryRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import GameContainer from "./GameContainer";
+import { getImagesFromFireBase, getCoords } from "./firebaseConfig";
+
+jest.mock("./firebaseConfig", () => {
+  return {
+    getImagesFromFireBase: jest.fn(),
+    getCoords: jest.fn(),
+  };
+});
 
 jest.mock("./firebaseConfig", () => {
   return {
@@ -14,6 +22,8 @@ describe("GameContainer integration", () => {
   it("game begins when user clicks the start button", async () => {
     const shareID = "mask";
     const mockGame = { src: "", id: shareID };
+    getImagesFromFireBase.mockResolvedValue([{ src: "", id: "foo" }]);
+
     render(
       <MemoryRouter>
         <GameContainer currGame={mockGame} />
@@ -32,6 +42,7 @@ describe("GameContainer integration", () => {
   it("Pulls up a dropdown menu underneath where the player clicked on the image", async () => {
     const shareID = "mask";
     const mockGame = { src: "", id: shareID };
+    getImagesFromFireBase.mockResolvedValue([{ src: "", id: "foo" }]);
     render(
       <MemoryRouter>
         <GameContainer currGame={mockGame} />
