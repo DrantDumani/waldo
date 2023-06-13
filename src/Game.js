@@ -3,21 +3,7 @@ import Objectives from "./Objectives";
 import PlayScreen from "./PlayScreen";
 import InputName from "./InputName";
 
-//what is the game data object supposed to look like?
-//set it to the game's object state.
-/*
-{
-  thumbnails: [{src: img src, alt: img name, id: img id}],
-}
-*/
-
-function Game({
-  imgData,
-  thumbnails,
-  onValidation,
-  currentChoice,
-  handleUserChoice,
-}) {
+function Game({ imgData, thumbnails, onValidation, currentChoice }) {
   const [gameState, setGameState] = useState("Intro");
   const [time, setTime] = useState(0);
 
@@ -80,11 +66,11 @@ function Game({
           <PlayScreen
             imgData={imgData}
             thumbnails={thumbnails}
-            checkGameOver={handleGameOver}
-            onValidation={onValidation}
+            // checkGameOver={handleGameOver}
+            // onValidation={onValidation}
             time={time}
             currentChoice={currentChoice}
-            handleUserChoice={handleUserChoice}
+            onUserChoice={onUserChoice}
           />
         )}
         {gameState === "GameOver" && <InputName />}

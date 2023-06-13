@@ -6,11 +6,11 @@ import ValidationText from "./ValidationText";
 function PlayScreen({
   imgData,
   thumbnails,
-  checkGameOver,
-  onValidation,
+  // checkGameOver,
+  // onValidation,
   time,
   currentChoice,
-  handleUserChoice,
+  onUserChoice,
 }) {
   const [showSelections, setShowSelections] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
@@ -52,11 +52,11 @@ function PlayScreen({
         <PlayerChoices
           position={position}
           choices={thumbnails}
-          onValidation={onValidation}
-          checkGameOver={checkGameOver}
+          // onValidation={onValidation}
+          // checkGameOver={checkGameOver}
           onSelection={closeChoices}
           displayValidation={displayValidation}
-          handleUserChoice={handleUserChoice}
+          handleUserChoice={onUserChoice}
         />
       )}
       {showValidation && (
