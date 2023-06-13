@@ -3,7 +3,14 @@ import Objectives from "./Objectives";
 import PlayScreen from "./PlayScreen";
 import InputName from "./InputName";
 
-function Game({ imgData, thumbnails, onValidation, currentChoice }) {
+function Game({
+  imgData,
+  thumbnails,
+  onValidation,
+  currentChoice,
+  plyrName,
+  confirmNameChange,
+}) {
   const [gameState, setGameState] = useState("Intro");
   const [time, setTime] = useState(0);
 
@@ -51,7 +58,13 @@ function Game({ imgData, thumbnails, onValidation, currentChoice }) {
             onUserChoice={onUserChoice}
           />
         )}
-        {gameState === "GameOver" && <InputName />}
+        {gameState === "GameOver" && (
+          <InputName
+            time={time}
+            plyrName={plyrName}
+            confirmNameChange={confirmNameChange}
+          />
+        )}
       </div>
     </main>
   );

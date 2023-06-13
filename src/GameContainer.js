@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getImagesFromFireBase, getCoords } from "./firebaseConfig";
 import Game from "./Game";
 
-function GameContainer({ currGame }) {
+function GameContainer({ currGame, plyrName, confirmNameChange }) {
   const [findImages, setFindImages] = useState([]);
   const [currentChoiceIndex, setCurrentChoiceIndex] = useState(0);
 
@@ -41,6 +41,8 @@ function GameContainer({ currGame }) {
       thumbnails={findImages}
       onValidation={handleUserValidation}
       currentChoice={findImages[currentChoiceIndex]}
+      plyrName={plyrName}
+      confirmNameChange={confirmNameChange}
     />
   );
 }

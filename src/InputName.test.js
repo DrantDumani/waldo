@@ -2,21 +2,22 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import InputName from "./InputName";
-import { NameContext } from "./NameContext";
-// import { DataContext } from "./DataContext";
+// import { NameContext } from "./NameContext";
+// // import { DataContext } from "./DataContext";
 
 describe("InputName Component", () => {
-  const handleChange = jest.fn();
+  const mockNameChange = jest.fn();
   const handleSubmit = jest.fn((e) => e.preventDefault());
   const time = 100;
   const mockName = "";
   it("calls function correct number of times when user types in input", async () => {
     render(
-      <NameContext.Provider
-        value={{ name: mockName, onNameChange: handleChange }}
-      >
-        <InputName time={time} handleSubmit={handleSubmit} />
-      </NameContext.Provider>,
+      <InputName
+        time={time}
+        handleSubmit={handleSubmit}
+        name={mockName}
+        confirmNameChange={mockNameChange}
+      />,
       {
         wrapper: MemoryRouter,
       }
@@ -25,16 +26,17 @@ describe("InputName Component", () => {
     const user = userEvent.setup();
 
     await user.type(input, "Ganon");
-    expect(handleChange).toBeCalledTimes(5);
+    expect(mockNameChange).toBeCalledTimes(5);
   });
 
   it("calls submit function with the correct arguments", async () => {
     render(
-      <NameContext.Provider
-        value={{ name: mockName, onNameChange: handleChange }}
-      >
-        <InputName time={time} handleSubmit={handleSubmit} />
-      </NameContext.Provider>,
+      <InputName
+        time={time}
+        handleSubmit={handleSubmit}
+        name={mockName}
+        confirmNameChange={mockNameChange}
+      />,
       {
         wrapper: MemoryRouter,
       }

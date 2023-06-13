@@ -1,11 +1,7 @@
-import { useContext } from "react";
-import { NameContext } from "./NameContext";
-
-function InputName({ time, handleSubmit }) {
-  const { name, onNameChange } = useContext(NameContext);
+function InputName({ time, handleSubmit, name, confirmNameChange }) {
   return (
     <form>
-      <input onChange={onNameChange} />
+      <input onChange={confirmNameChange} />
       <button
         type="submit"
         onClick={(e) => {

@@ -3,8 +3,15 @@ import Homepage from "./Homepage";
 import Leaderboard from "./Leaderboard";
 import Navbar from "./Navbar";
 import GameContainer from "./GameContainer";
+import { useState } from "react";
 
 function App({ gameImages, currGame, setCurrGame }) {
+  const [name, setName] = useState("");
+
+  const confirmNameChange = (e) => {
+    setName(e.target.value);
+  };
+
   return (
     <>
       <Navbar />
@@ -14,7 +21,16 @@ function App({ gameImages, currGame, setCurrGame }) {
           element={<Homepage images={gameImages} onLinkClick={setCurrGame} />}
         />
         <Route path="/leaderboards" element={<Leaderboard />} />
-        <Route path="/game" element={<GameContainer currGame={currGame} />} />
+        <Route
+          path="/game"
+          element={
+            <GameContainer
+              currGame={currGame}
+              plyrName={name}
+              confirmNameChange={confirmNameChange}
+            />
+          }
+        />
       </Routes>
     </>
   );
