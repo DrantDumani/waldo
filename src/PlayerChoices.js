@@ -1,8 +1,6 @@
 function PlayerChoices({
   position,
   choices,
-  // onValidation,
-  // checkGameOver,
   onSelection,
   displayValidation,
   handleUserChoice,
@@ -16,7 +14,6 @@ function PlayerChoices({
         <button
           key={choice.id}
           onClick={() => {
-            // onValidation(position, choice.id, checkGameOver);
             handleUserChoice(position, ind);
             onSelection();
             displayValidation();

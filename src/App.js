@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Homepage from "./Homepage";
 import Leaderboard from "./Leaderboard";
 import Navbar from "./Navbar";
-import Game from "./Game";
+import GameContainer from "./GameContainer";
 
 function App({ gameImages, currGame, setCurrGame }) {
   return (
@@ -14,7 +14,7 @@ function App({ gameImages, currGame, setCurrGame }) {
           element={<Homepage images={gameImages} onLinkClick={setCurrGame} />}
         />
         <Route path="/leaderboards" element={<Leaderboard />} />
-        <Route path="/game" element={<Game imgData={gameImages} />} />
+        <Route path="/game" element={<GameContainer currGame={currGame} />} />
       </Routes>
     </>
   );

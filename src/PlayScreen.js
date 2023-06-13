@@ -6,8 +6,6 @@ import ValidationText from "./ValidationText";
 function PlayScreen({
   imgData,
   thumbnails,
-  // checkGameOver,
-  // onValidation,
   time,
   currentChoice,
   onUserChoice,
@@ -52,8 +50,6 @@ function PlayScreen({
         <PlayerChoices
           position={position}
           choices={thumbnails}
-          // onValidation={onValidation}
-          // checkGameOver={checkGameOver}
           onSelection={closeChoices}
           displayValidation={displayValidation}
           handleUserChoice={onUserChoice}

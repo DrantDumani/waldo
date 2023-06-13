@@ -155,13 +155,4 @@ describe("GameContainer integration", () => {
       screen.getByRole("button", { name: "Submit Score!" })
     ).toBeInTheDocument();
   });
-
-  //TODO
-  //2. Write tests for playing the game. The game ends when a user finds all characters in the image.
-  //Write code for passing the above tests
-
-  //3. The game container tests should mock the external firebase functions. Instead of making a data request
-  //just return fake game data and use that fake data as validation for the user in the tests.
-
-  //4. Write tests for leaderboard. Separate file
 });

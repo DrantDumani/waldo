@@ -36,26 +36,6 @@ function Game({ imgData, thumbnails, onValidation, currentChoice }) {
     }
   };
 
-  // const foundImage = (name) => {
-  //   for (let i = 0; i < currGameData.length; i++) {
-  //     if (name in currGameData[i]) {
-  //       const found = { ...currGameData[i], found: true };
-  //       const newGameData = [...currGameData];
-  //       newGameData[i] = found;
-  //       setCurrGameData(newGameData);
-  //       break;
-  //     }
-  //   }
-  //   handleGameOver();
-  // };
-
-  // const checkVic = (e) => {
-  //   console.log(e.nativeEvent.offsetX);
-  //   if (e.nativeEvent.offsetX > 200) {
-  //     setFake(true);
-  //   }
-  // };
-
   return (
     <main>
       <div>
@@ -66,8 +46,6 @@ function Game({ imgData, thumbnails, onValidation, currentChoice }) {
           <PlayScreen
             imgData={imgData}
             thumbnails={thumbnails}
-            // checkGameOver={handleGameOver}
-            // onValidation={onValidation}
             time={time}
             currentChoice={currentChoice}
             onUserChoice={onUserChoice}
