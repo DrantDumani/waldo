@@ -15,7 +15,7 @@ function PlayScreen({
   const [position, setPosition] = useState(null);
 
   const handleImageClick = (e) => {
-    setPosition({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY + 10 });
+    setPosition({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
     setShowSelections(true);
   };
 

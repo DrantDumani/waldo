@@ -8,7 +8,7 @@ function PlayerChoices({
   return (
     <div
       data-testid="button-container"
-      style={{ left: position.x, top: position.y, position: "absolute" }}
+      style={{ left: position.x, top: position.y + 10, position: "absolute" }}
     >
       {choices.map((choice, ind) => (
         <button
