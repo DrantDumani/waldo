@@ -13,9 +13,14 @@ function PlayScreen({
   const [showSelections, setShowSelections] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
   const [position, setPosition] = useState(null);
+  const [dimensions, setDimensions] = useState(null);
 
   const handleImageClick = (e) => {
     setPosition({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
+    setDimensions({
+      width: e.target.clientWidth,
+      height: e.target.clientHeight,
+    });
     setShowSelections(true);
   };
 
@@ -53,6 +58,7 @@ function PlayScreen({
           onSelection={closeChoices}
           displayValidation={displayValidation}
           handleUserChoice={onUserChoice}
+          imgDimensions={dimensions}
         />
       )}
       {showValidation && (
