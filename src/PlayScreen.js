@@ -22,6 +22,7 @@ function PlayScreen({
       height: e.target.clientHeight,
     });
     setShowSelections(true);
+    e.stopPropagation();
   };
 
   const displayValidation = () => {
@@ -37,6 +38,17 @@ function PlayScreen({
       clearTimeout(id);
     };
   }, [showValidation]);
+
+  useEffect(() => {
+    const removeChoiceMenu = () => {
+      setShowSelections(false);
+    };
+
+    document.body.addEventListener("click", removeChoiceMenu);
+    return () => {
+      document.body.removeEventListener("click", removeChoiceMenu);
+    };
+  }, [showSelections]);
 
   const closeChoices = () => {
     setShowSelections(false);
