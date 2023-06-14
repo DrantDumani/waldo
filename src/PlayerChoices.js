@@ -19,7 +19,6 @@ function PlayerChoices({
         <button
           key={choice.id}
           onClick={() => {
-            console.log(imgDimensions);
             const userPosition = {
               x: Number(position.x) / imgDimensions.width,
               y: Number(position.y) / imgDimensions.height,
