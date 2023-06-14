@@ -1,4 +1,5 @@
 import React from "react";
+import UserTime from "./UserTime";
 
 function Leaderboard({ entries }) {
   return (
@@ -12,7 +13,7 @@ function Leaderboard({ entries }) {
               <div key={entry.gameId}>
                 <span data-testid="name-field">Name: {entry.name}</span>
                 <span>{entry.date}</span>
-                <span>{entry.time}</span>
+                <span>{<UserTime time={entry.time} />}</span>
               </div>
             ))
         ) : (
