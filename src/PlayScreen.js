@@ -45,22 +45,19 @@ function PlayScreen({
   return (
     <div>
       <UserTime time={time} />
-      <img
-        onClick={handleImageClick}
-        src={imgData.src}
-        alt="game-screen"
-        style={{ position: "relative" }}
-      />
-      {showSelections && (
-        <PlayerChoices
-          position={position}
-          choices={thumbnails}
-          onSelection={closeChoices}
-          displayValidation={displayValidation}
-          handleUserChoice={onUserChoice}
-          imgDimensions={dimensions}
-        />
-      )}
+      <div style={{ position: "relative" }}>
+        <img onClick={handleImageClick} src={imgData.src} alt="game-screen" />
+        {showSelections && (
+          <PlayerChoices
+            position={position}
+            choices={thumbnails}
+            onSelection={closeChoices}
+            displayValidation={displayValidation}
+            handleUserChoice={onUserChoice}
+            imgDimensions={dimensions}
+          />
+        )}
+      </div>
       {showValidation && (
         <ValidationText boolean={currentChoice.found} name={currentChoice.id} />
       )}
