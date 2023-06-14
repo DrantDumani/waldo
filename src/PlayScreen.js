@@ -18,8 +18,8 @@ function PlayScreen({
   const handleImageClick = (e) => {
     setPosition({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
     setDimensions({
-      width: e.target.clientWidth,
-      height: e.target.clientHeight,
+      width: e.target.clientWidth || 1,
+      height: e.target.clientHeight || 1,
     });
     setShowSelections(true);
     e.stopPropagation();

@@ -9,7 +9,7 @@ function GameContainer({ currGame, plyrName, confirmNameChange }) {
   const handleUserValidation = async (userInput, numIndex) => {
     setCurrentChoiceIndex(numIndex);
     const colId = currGame.id;
-    const docId = findImages[numIndex];
+    const docId = findImages[numIndex].id;
     const coords = await getCoords(colId, docId);
 
     if (

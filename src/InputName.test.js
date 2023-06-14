@@ -2,8 +2,6 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import InputName from "./InputName";
-// import { NameContext } from "./NameContext";
-// // import { DataContext } from "./DataContext";
 
 describe("InputName Component", () => {
   const mockNameChange = jest.fn();

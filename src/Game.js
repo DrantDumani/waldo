@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Objectives from "./Objectives";
 import PlayScreen from "./PlayScreen";
-import InputName from "./InputName";
+// import InputName from "./InputName";
+import InputNameContainer from "./InputNameContainer";
 
 function Game({
   imgData,
@@ -59,7 +60,7 @@ function Game({
           />
         )}
         {gameState === "GameOver" && (
-          <InputName
+          <InputNameContainer
             time={time}
             plyrName={plyrName}
             confirmNameChange={confirmNameChange}
