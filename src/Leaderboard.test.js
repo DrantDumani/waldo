@@ -15,4 +15,14 @@ describe("Leaderboard component", () => {
     expect(names[1].textContent).toBe("Buck");
     expect(names[2].textContent).toBe("Billy");
   });
+
+  it("renders a message about an empty leaderboard if entries contains no elements", () => {
+    const mockEntries = [];
+    render(<Leaderboard entries={mockEntries} />);
+    expect(
+      screen.getByText(
+        /The Leaderboard is empty! Be the first to submit a score!/
+      )
+    ).toBeInTheDocument();
+  });
 });
