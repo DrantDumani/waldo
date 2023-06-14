@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Homepage from "./Homepage";
-import Leaderboard from "./Leaderboard";
 import Navbar from "./Navbar";
 import GameContainer from "./GameContainer";
 import { useState } from "react";
+import PageWrapper from "./PageWrapper";
 
 function App({ gameImages, currGame, setCurrGame }) {
   const [name, setName] = useState("");
@@ -20,7 +20,16 @@ function App({ gameImages, currGame, setCurrGame }) {
           path="/"
           element={<Homepage images={gameImages} onLinkClick={setCurrGame} />}
         />
-        <Route path="/leaderboards" element={<Leaderboard />} />
+        <Route
+          path="/leaderboards"
+          element={
+            <PageWrapper
+              gameImages={gameImages}
+              handleClick={setCurrGame}
+              gameName={currGame.id}
+            />
+          }
+        />
         <Route
           path="/game"
           element={
