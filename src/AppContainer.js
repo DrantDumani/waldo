@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import App from "./App";
-import getImagesFromFireBase from "./firebaseConfig";
+import { getImagesFromFireBase } from "./firebaseConfig";
 
 function AppContainer() {
   const [gameImages, setGameImages] = useState([]);
