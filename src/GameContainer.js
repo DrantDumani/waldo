@@ -43,6 +43,7 @@ function GameContainer({ currGame, plyrName, confirmNameChange }) {
       currentChoice={findImages[currentChoiceIndex]}
       plyrName={plyrName}
       confirmNameChange={confirmNameChange}
+      gameName={currGame.id}
     />
   );
 }

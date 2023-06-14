@@ -1,7 +1,9 @@
 import { addEntryToLeaderboard, getSwearWords } from "./firebaseConfig";
 import InputName from "./InputName";
+import { useNavigate } from "react-router-dom";
 
-function InputNameContainer({ time, plyrName, confirmNameChange }) {
+function InputNameContainer({ time, plyrName, confirmNameChange, gameName }) {
+  const navigate = useNavigate();
   const censorNames = async (name) => {
     const censoredWords = await getSwearWords();
     for (let word of censoredWords) {
@@ -22,9 +24,10 @@ function InputNameContainer({ time, plyrName, confirmNameChange }) {
       name: validName,
       date: dateStr,
       time: time,
+      gameId: gameName,
     };
-    console.log(entry);
     addEntryToLeaderboard(entry);
+    return navigate("/leaderboards");
   };
 
   return (

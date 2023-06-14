@@ -11,6 +11,7 @@ function Game({
   currentChoice,
   plyrName,
   confirmNameChange,
+  gameName,
 }) {
   const [gameState, setGameState] = useState("Intro");
   const [time, setTime] = useState(0);
@@ -64,6 +65,7 @@ function Game({
             time={time}
             plyrName={plyrName}
             confirmNameChange={confirmNameChange}
+            gameName={gameName}
           />
         )}
       </div>

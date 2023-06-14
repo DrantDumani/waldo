@@ -7,7 +7,7 @@ import App from "./App";
 jest.mock("./Homepage", () => () => {
   return (
     <div>
-      <h1>Waldo without Waldo</h1>;\
+      <h1>Waldo without Waldo</h1>;
       <a href="mock" data-testid="game-link">
         mock
       </a>
@@ -45,9 +45,16 @@ describe("user navigation", () => {
   });
 
   it("navigates from leaderboard to homepage", async () => {
+    const fakeImages = [];
+    const fakeGame = {};
+    const setFakeGame = jest.fn();
     render(
       <MemoryRouter initialEntries={["/leaderboards"]}>
-        <App />
+        <App
+          gameImages={fakeImages}
+          currGame={fakeGame}
+          setCurrGame={setFakeGame}
+        />
       </MemoryRouter>
     );
     const user = userEvent.setup();

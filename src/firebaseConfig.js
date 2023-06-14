@@ -4,8 +4,13 @@ import {
   getFirestore,
   doc,
   getDoc,
+  getDocs,
   addDoc,
   collection,
+  query,
+  where,
+  orderBy,
+  limit,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -21,6 +26,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 const firestore = getFirestore(app);
+
+const getLeaderBoardEntries = async (gameQuery) => {
+  if (!gameQuery) {
+    return [];
+  }
+  const q = query(
+    collection(firestore, "Leaderboard"),
+    where("gameId", "==", gameQuery),
+    orderBy("time"),
+    limit(50)
+  );
+  const queryEntries = await getDocs(q);
+  const entries = [];
+  queryEntries.forEach((doc) => entries.push(doc.data()));
+  return entries;
+};
 
 const getSwearWords = async () => {
   const docRef = doc(firestore, "CensorTerms", "words");
@@ -71,4 +92,5 @@ export {
   getCoords,
   getSwearWords,
   addEntryToLeaderboard,
+  getLeaderBoardEntries,
 };
