@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { getImagesFromFireBase, getCoords } from "./firebaseConfig";
 import Game from "./Game";
 
-function GameContainer({ currGame }) {
+function GameContainer({ currGame, plyrName, confirmNameChange }) {
   const [findImages, setFindImages] = useState([]);
   const [currentChoiceIndex, setCurrentChoiceIndex] = useState(0);
 
   const handleUserValidation = async (userInput, numIndex) => {
     setCurrentChoiceIndex(numIndex);
     const colId = currGame.id;
-    const docId = findImages[numIndex];
+    const docId = findImages[numIndex].id;
     const coords = await getCoords(colId, docId);
 
     if (
@@ -41,6 +41,8 @@ function GameContainer({ currGame }) {
       thumbnails={findImages}
       onValidation={handleUserValidation}
       currentChoice={findImages[currentChoiceIndex]}
+      plyrName={plyrName}
+      confirmNameChange={confirmNameChange}
     />
   );
 }

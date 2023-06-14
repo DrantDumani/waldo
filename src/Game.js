@@ -1,9 +1,17 @@
 import { useState, useEffect } from "react";
 import Objectives from "./Objectives";
 import PlayScreen from "./PlayScreen";
-import InputName from "./InputName";
+// import InputName from "./InputName";
+import InputNameContainer from "./InputNameContainer";
 
-function Game({ imgData, thumbnails, onValidation, currentChoice }) {
+function Game({
+  imgData,
+  thumbnails,
+  onValidation,
+  currentChoice,
+  plyrName,
+  confirmNameChange,
+}) {
   const [gameState, setGameState] = useState("Intro");
   const [time, setTime] = useState(0);
 
@@ -51,7 +59,13 @@ function Game({ imgData, thumbnails, onValidation, currentChoice }) {
             onUserChoice={onUserChoice}
           />
         )}
-        {gameState === "GameOver" && <InputName />}
+        {gameState === "GameOver" && (
+          <InputNameContainer
+            time={time}
+            plyrName={plyrName}
+            confirmNameChange={confirmNameChange}
+          />
+        )}
       </div>
     </main>
   );

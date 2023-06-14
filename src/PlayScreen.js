@@ -13,10 +13,16 @@ function PlayScreen({
   const [showSelections, setShowSelections] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
   const [position, setPosition] = useState(null);
+  const [dimensions, setDimensions] = useState(null);
 
   const handleImageClick = (e) => {
-    setPosition({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY + 10 });
+    setPosition({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
+    setDimensions({
+      width: e.target.clientWidth || 1,
+      height: e.target.clientHeight || 1,
+    });
     setShowSelections(true);
+    e.stopPropagation();
   };
 
   const displayValidation = () => {
@@ -33,6 +39,17 @@ function PlayScreen({
     };
   }, [showValidation]);
 
+  useEffect(() => {
+    const removeChoiceMenu = () => {
+      setShowSelections(false);
+    };
+
+    document.body.addEventListener("click", removeChoiceMenu);
+    return () => {
+      document.body.removeEventListener("click", removeChoiceMenu);
+    };
+  }, [showSelections]);
+
   const closeChoices = () => {
     setShowSelections(false);
   };
@@ -40,21 +57,19 @@ function PlayScreen({
   return (
     <div>
       <UserTime time={time} />
-      <img
-        onClick={handleImageClick}
-        src={imgData.src}
-        alt="game-screen"
-        style={{ position: "relative" }}
-      />
-      {showSelections && (
-        <PlayerChoices
-          position={position}
-          choices={thumbnails}
-          onSelection={closeChoices}
-          displayValidation={displayValidation}
-          handleUserChoice={onUserChoice}
-        />
-      )}
+      <div style={{ position: "relative" }}>
+        <img onClick={handleImageClick} src={imgData.src} alt="game-screen" />
+        {showSelections && (
+          <PlayerChoices
+            position={position}
+            choices={thumbnails}
+            onSelection={closeChoices}
+            displayValidation={displayValidation}
+            handleUserChoice={onUserChoice}
+            imgDimensions={dimensions}
+          />
+        )}
+      </div>
       {showValidation && (
         <ValidationText boolean={currentChoice.found} name={currentChoice.id} />
       )}
