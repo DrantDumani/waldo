@@ -1,12 +1,15 @@
 import React from "react";
 import UserTime from "./UserTime";
+import LoadingScreen from "./Loading";
 
 function Leaderboard({ entries, name }) {
   return (
     <div className="leaderboard-div">
       <h1>{name}</h1>
       <div className="flex-entry-container">
-        {entries.length > 0 ? (
+        {entries === null ? (
+          <LoadingScreen />
+        ) : entries.length > 0 ? (
           <div className="outer-flex">
             <div className="inner-grid">
               <span>Place</span>

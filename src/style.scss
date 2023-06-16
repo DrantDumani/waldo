@@ -310,3 +310,14 @@ main {
     color: #f9c9f9;
   }
 }
+
+.loading-container {
+  flex: 1 1 auto;
+  background-color: #000;
+  color: #fff;
+  font-size: calc(32px + 0.5vw);
+
+  .animate-load {
+    color: #ffb0ff;
+  }
+}

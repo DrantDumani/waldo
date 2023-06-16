@@ -29,7 +29,7 @@ const firestore = getFirestore(app);
 
 const getLeaderBoardEntries = async (gameQuery) => {
   if (!gameQuery) {
-    return [];
+    return null;
   }
   const q = query(
     collection(firestore, "Leaderboard"),
