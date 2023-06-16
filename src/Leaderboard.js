@@ -17,7 +17,7 @@ function Leaderboard({ entries, name }) {
             {entries
               .sort((a, b) => a.time - b.time)
               .map((entry, ind) => (
-                <div key={entry.gameId} className="inner-grid">
+                <div key={entry.id} className="inner-grid">
                   <span>{ind + 1}</span>
                   <span data-testid="name-field">{entry.name}</span>
                   <span>{entry.date}</span>

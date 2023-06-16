@@ -39,7 +39,11 @@ const getLeaderBoardEntries = async (gameQuery) => {
   );
   const queryEntries = await getDocs(q);
   const entries = [];
-  queryEntries.forEach((doc) => entries.push(doc.data()));
+  queryEntries.forEach((doc) => {
+    const entry = doc.data();
+    entry.id = doc.id;
+    entries.push(entry);
+  });
   return entries;
 };
 
