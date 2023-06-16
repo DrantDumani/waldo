@@ -67,7 +67,6 @@ $menu-color: #7d007d;
 }
 
 main {
-  // padding: 0 4vw;
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
@@ -285,5 +284,29 @@ main {
         background-color: $menu-color;
       }
     }
+  }
+}
+
+.about-container {
+  flex: 1 1 auto;
+  display: flex;
+  background-color: #000;
+  color: #fff;
+
+  .about-flex {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .link-container {
+    display: flex;
+    gap: 12px;
+  }
+
+  a:visited {
+    color: #f9c9f9;
   }
 }

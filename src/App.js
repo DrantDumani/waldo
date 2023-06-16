@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import GameContainer from "./GameContainer";
 import { useState } from "react";
 import PageWrapper from "./PageWrapper";
+import About from "./About";
 
 function App({ gameImages, currGame, setCurrGame }) {
   const [name, setName] = useState("");
@@ -42,6 +43,7 @@ function App({ gameImages, currGame, setCurrGame }) {
             />
           }
         />
+        <Route path="/about" element={<About />} />
       </Routes>
     </div>
   );
