@@ -9,7 +9,6 @@ function Navbar() {
     seeAbout: true,
   });
 
-  //could use a for in loop while checking the keys instead. Refactor later?
   useEffect(() => {
     if (pathname === "/") {
       setDisplay({
@@ -35,6 +34,9 @@ function Navbar() {
   return (
     <nav className="navbar">
       <ul className="nav-options">
+        <li>
+          <span className="site-title">WWW</span>
+        </li>
         {display.seeHome && (
           <li>
             <Link className="nav-link" to="/">

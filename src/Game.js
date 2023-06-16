@@ -47,7 +47,7 @@ function Game({
 
   return (
     <main>
-      <div>
+      <div className="game-container">
         {gameState === "Intro" && (
           <Objectives handleClick={handleStartClick} thumbnails={thumbnails} />
         )}

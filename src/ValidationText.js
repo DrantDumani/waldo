@@ -1,8 +1,8 @@
 function ValidationText({ boolean, name }) {
   return (
-    <div>
+    <div className="validation-text">
       {boolean ? (
-        <p>{`You found ${name}!`}</p>
+        <p>{`${name} has been found!`}</p>
       ) : (
         <p>Incorrect! Keep searching.</p>
       )}

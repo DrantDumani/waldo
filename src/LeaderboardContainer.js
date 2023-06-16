@@ -13,7 +13,7 @@ function LeaderboardContainer({ gameName }) {
     fetchEntries(gameName);
   }, [gameName]);
 
-  return <Leaderboard entries={entries} />;
+  return <Leaderboard entries={entries} name={gameName} />;
 }
 
 export default LeaderboardContainer;
