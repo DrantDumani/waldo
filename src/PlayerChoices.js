@@ -8,6 +8,7 @@ function PlayerChoices({
 }) {
   return (
     <div
+      className="choices-container"
       data-testid="button-container"
       style={{
         left: position.x,

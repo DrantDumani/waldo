@@ -13,8 +13,10 @@ function App({ gameImages, currGame, setCurrGame }) {
   };
 
   return (
-    <>
-      <Navbar />
+    <div id="game-app">
+      <header className="header">
+        <Navbar />
+      </header>
       <Routes>
         <Route
           path="/"
@@ -41,7 +43,7 @@ function App({ gameImages, currGame, setCurrGame }) {
           }
         />
       </Routes>
-    </>
+    </div>
   );
 }
 

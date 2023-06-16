@@ -88,7 +88,7 @@ describe("GameContainer integration", () => {
       upperY: 300,
     });
     await user.click(userPick);
-    expect(screen.getByText("You found foo!")).toBeInTheDocument();
+    expect(screen.getByText("foo has been found")).toBeInTheDocument();
   });
 
   it("tells the user when they haven't found the image", async () => {

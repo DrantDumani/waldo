@@ -56,8 +56,27 @@ function PlayScreen({
 
   return (
     <div>
-      <UserTime time={time} />
-      <div style={{ position: "relative" }}>
+      <div className="thumbnail-bar">
+        <div className="thumbnail-nav">
+          {thumbnails.map((pic) => (
+            <div
+              key={pic.id}
+              className={`thumbnail-img ${pic.found && "found-img"}`}
+            >
+              <img src={pic.src} alt={pic.id} />
+              <p>{pic.id}</p>
+            </div>
+          ))}
+          <UserTime time={time} />
+        </div>
+        {showValidation && (
+          <ValidationText
+            boolean={currentChoice.found}
+            name={currentChoice.id}
+          />
+        )}
+      </div>
+      <div className="game-img-container" style={{ position: "relative" }}>
         <img onClick={handleImageClick} src={imgData.src} alt="game-screen" />
         {showSelections && (
           <PlayerChoices
@@ -70,9 +89,6 @@ function PlayScreen({
           />
         )}
       </div>
-      {showValidation && (
-        <ValidationText boolean={currentChoice.found} name={currentChoice.id} />
-      )}
     </div>
   );
 }

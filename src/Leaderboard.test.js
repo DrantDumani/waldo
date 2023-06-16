@@ -11,9 +11,9 @@ describe("Leaderboard component", () => {
     render(<Leaderboard entries={mockEntries} />);
     const names = screen.getAllByTestId("name-field");
     expect(names.length).toBe(mockEntries.length);
-    expect(names[0].textContent).toBe("Name: Bob");
-    expect(names[1].textContent).toBe("Name: Buck");
-    expect(names[2].textContent).toBe("Name: Billy");
+    expect(names[0].textContent).toBe("Bob");
+    expect(names[1].textContent).toBe("Buck");
+    expect(names[2].textContent).toBe("Billy");
   });
 
   it("renders a message about an empty leaderboard if entries contains no elements", () => {
