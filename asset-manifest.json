@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/waldo/static/css/main.f883ebbe.css",
-    "main.js": "/waldo/static/js/main.9fa5ff0e.js",
+    "main.css": "/waldo/static/css/main.9af3821f.css",
+    "main.js": "/waldo/static/js/main.326aac03.js",
     "static/media/ReggaeOne-Regular.ttf": "/waldo/static/media/ReggaeOne-Regular.90a023f683f8cd4c0e7a.ttf",
     "index.html": "/waldo/index.html",
-    "main.f883ebbe.css.map": "/waldo/static/css/main.f883ebbe.css.map",
-    "main.9fa5ff0e.js.map": "/waldo/static/js/main.9fa5ff0e.js.map"
+    "main.9af3821f.css.map": "/waldo/static/css/main.9af3821f.css.map",
+    "main.326aac03.js.map": "/waldo/static/js/main.326aac03.js.map"
   },
   "entrypoints": [
-    "static/css/main.f883ebbe.css",
-    "static/js/main.9fa5ff0e.js"
+    "static/css/main.9af3821f.css",
+    "static/js/main.326aac03.js"
   ]
 }
