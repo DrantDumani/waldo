@@ -147,8 +147,12 @@ main {
 
     img {
       width: 100%;
-      height: 200px;
+      height: calc(100px + 1vw);
       object-fit: contain;
+    }
+
+    p {
+      font-size: calc(6px + 1vw);
     }
   }
 }
@@ -177,7 +181,6 @@ main {
   background-color: $menu-color;
   color: #fff;
   padding-top: 2vh;
-  gap: 0 8vw;
   border-bottom: 3px solid #000;
 
   .validation-text {
@@ -187,10 +190,12 @@ main {
   .thumbnail-nav {
     display: flex;
     justify-content: center;
+    gap: 0 8vw;
   }
 
   p {
     margin: 0;
+    font-size: calc(6px + 1vw);
   }
 
   span {
