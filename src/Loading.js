@@ -17,7 +17,12 @@ function LoadingScreen() {
   return (
     <div className="loading-container">
       {strArr.map((c, ind) => (
-        <span className={animateIndex === ind && "animate-load"}>{c}</span>
+        <span
+          key={ind}
+          className={animateIndex === ind ? "animate-load" : undefined}
+        >
+          {c}
+        </span>
       ))}
     </div>
   );
