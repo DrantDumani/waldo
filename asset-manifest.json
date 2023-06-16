@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Waldo-Without-Waldo/static/css/main.deba70f5.css",
+    "main.js": "/Waldo-Without-Waldo/static/js/main.4badf127.js",
+    "static/media/ReggaeOne-Regular.ttf": "/Waldo-Without-Waldo/static/media/ReggaeOne-Regular.90a023f683f8cd4c0e7a.ttf",
+    "index.html": "/Waldo-Without-Waldo/index.html",
+    "main.deba70f5.css.map": "/Waldo-Without-Waldo/static/css/main.deba70f5.css.map",
+    "main.4badf127.js.map": "/Waldo-Without-Waldo/static/js/main.4badf127.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.deba70f5.css",
+    "static/js/main.4badf127.js"
+  ]
+}
