@@ -1,12 +1,15 @@
 import React from "react";
 import UserTime from "./UserTime";
+import LoadingScreen from "./Loading";
 
 function Leaderboard({ entries, name }) {
   return (
     <div className="leaderboard-div">
       <h1>{name}</h1>
       <div className="flex-entry-container">
-        {entries.length > 0 ? (
+        {entries === null ? (
+          <LoadingScreen />
+        ) : entries.length > 0 ? (
           <div className="outer-flex">
             <div className="inner-grid">
               <span>Place</span>
@@ -17,7 +20,7 @@ function Leaderboard({ entries, name }) {
             {entries
               .sort((a, b) => a.time - b.time)
               .map((entry, ind) => (
-                <div key={entry.gameId} className="inner-grid">
+                <div key={entry.id} className="inner-grid">
                   <span>{ind + 1}</span>
                   <span data-testid="name-field">{entry.name}</span>
                   <span>{entry.date}</span>

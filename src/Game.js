@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Objectives from "./Objectives";
 import PlayScreen from "./PlayScreen";
-// import InputName from "./InputName";
+import LoadingScreen from "./Loading";
 import InputNameContainer from "./InputNameContainer";
 
 function Game({
@@ -48,9 +48,15 @@ function Game({
   return (
     <main>
       <div className="game-container">
-        {gameState === "Intro" && (
-          <Objectives handleClick={handleStartClick} thumbnails={thumbnails} />
-        )}
+        {gameState === "Intro" &&
+          (thumbnails.length > 0 ? (
+            <Objectives
+              handleClick={handleStartClick}
+              thumbnails={thumbnails}
+            />
+          ) : (
+            <LoadingScreen />
+          ))}
         {gameState === "Playing" && (
           <PlayScreen
             imgData={imgData}

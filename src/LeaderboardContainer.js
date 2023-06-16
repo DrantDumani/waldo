@@ -3,7 +3,7 @@ import { getLeaderBoardEntries } from "./firebaseConfig";
 import { useEffect, useState } from "react";
 
 function LeaderboardContainer({ gameName }) {
-  const [entries, setEntries] = useState([]);
+  const [entries, setEntries] = useState(null);
 
   useEffect(() => {
     const fetchEntries = async (gameName) => {
