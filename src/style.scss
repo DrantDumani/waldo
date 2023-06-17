@@ -1,9 +1,11 @@
-@font-face {
-  font-family: "Reggae";
-  src: url("../assets/ReggaeOne-Regular.ttf"), format("truetype");
-  src: url("../assets/ReggaeOne-Regular.woff"), format("woff");
-  src: url("../assets/ReggaeOne-Regular.woff2"), format("woff2");
-}
+// @font-face {
+//   font-family: "Reggae";
+//   src: url("../assets/ReggaeOne-Regular.ttf"), format("truetype");
+//   src: url("../assets/ReggaeOne-Regular.woff"), format("woff");
+//   src: url("../assets/ReggaeOne-Regular.woff2"), format("woff2");
+// }
+
+@import url("https://fonts.googleapis.com/css2?family=Reggae+One&display=swap");
 
 body {
   background-color: #ffb0ff;
