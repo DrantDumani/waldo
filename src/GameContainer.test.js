@@ -24,7 +24,7 @@ describe("GameContainer integration", () => {
     );
     const user = userEvent.setup();
 
-    const startBtn = screen.getByRole("button", { name: /start/i });
+    const startBtn = await screen.findByRole("button", { name: /start/i });
     await user.click(startBtn);
 
     const gameImg = screen.getByAltText("game-screen");
@@ -42,7 +42,8 @@ describe("GameContainer integration", () => {
       </MemoryRouter>
     );
     const user = userEvent.setup();
-    await user.click(screen.getByRole("button", { name: /start/i }));
+    const startBtn = await screen.findByRole("button", { name: /start/i });
+    await user.click(startBtn);
 
     const fakeMouseEvent = new MouseEvent("click", { bubbles: true });
     Object.defineProperties(fakeMouseEvent, {
@@ -71,7 +72,8 @@ describe("GameContainer integration", () => {
       </MemoryRouter>
     );
     const user = userEvent.setup();
-    await user.click(screen.getByRole("button", { name: /start/i }));
+    const startBtn = await screen.findByRole("button", { name: /start/i });
+    await user.click(startBtn);
 
     const fakeMouseEvent = new MouseEvent("click", { bubbles: true });
     Object.defineProperties(fakeMouseEvent, {
@@ -88,7 +90,7 @@ describe("GameContainer integration", () => {
       upperY: 300,
     });
     await user.click(userPick);
-    expect(screen.getByText("foo has been found")).toBeInTheDocument();
+    expect(screen.getByText("foo has been found!")).toBeInTheDocument();
   });
 
   it("tells the user when they haven't found the image", async () => {
@@ -104,7 +106,8 @@ describe("GameContainer integration", () => {
       </MemoryRouter>
     );
     const user = userEvent.setup();
-    await user.click(screen.getByRole("button", { name: /start/i }));
+    const startBtn = await screen.findByRole("button", { name: /start/i });
+    await user.click(startBtn);
 
     const fakeMouseEvent = new MouseEvent("click", { bubbles: true });
     Object.defineProperties(fakeMouseEvent, {
@@ -134,7 +137,8 @@ describe("GameContainer integration", () => {
       </MemoryRouter>
     );
     const user = userEvent.setup();
-    await user.click(screen.getByRole("button", { name: /start/i }));
+    const startBtn = await screen.findByRole("button", { name: /start/i });
+    await user.click(startBtn);
 
     const fakeMouseEvent = new MouseEvent("click", { bubbles: true });
     Object.defineProperties(fakeMouseEvent, {

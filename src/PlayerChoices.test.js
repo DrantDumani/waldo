@@ -9,6 +9,7 @@ describe("PlayerChoices component", () => {
   const mockSelection = jest.fn();
   const mockDisplay = jest.fn();
   const mockUserChoice = jest.fn();
+  const mockDimensions = { width: 1, height: 1 };
 
   it("renders all options in the choices array", () => {
     render(
@@ -18,6 +19,7 @@ describe("PlayerChoices component", () => {
         onSelection={mockSelection}
         displayValidation={mockDisplay}
         handleUserChoice={mockUserChoice}
+        imgDimensions={mockDimensions}
       />,
       {
         wrapper: MemoryRouter,
@@ -35,13 +37,15 @@ describe("PlayerChoices component", () => {
         onSelection={mockSelection}
         displayValidation={mockDisplay}
         handleUserChoice={mockUserChoice}
+        imgDimensions={mockDimensions}
       />,
       {
         wrapper: MemoryRouter,
       }
     );
     const user = userEvent.setup();
-    await user.click(screen.getAllByRole("button")[0]);
+    const plyrChoices = await screen.findAllByRole("button");
+    await user.click(plyrChoices[0]);
     expect(mockSelection).toBeCalled();
     expect(mockDisplay).toBeCalled();
     expect(mockUserChoice).toBeCalled();
